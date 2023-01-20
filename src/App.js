@@ -1,53 +1,132 @@
 import "./App.css"
-import {useState} from "react"
+import {useEffect, useState} from "react"
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import {Col, Form, Row} from "react-bootstrap";
+
+
+const MAX_SECONDS_BETWEEN_STEPS = 10;
+const synth = window.speechSynthesis;
+
+const delay = ms => new Promise((res) => {
+    console.log("Waiting " + ms)
+    return setTimeout(res, ms)
+});
+
+class FormPlayer {
+
+    constructor() {
+        this.isPlaying = false
+        this.dictationSpeed = 1
+        this.timeBetweenSteps = 1
+        this.currentStep = 0
+    }
+
+    async play(form) {
+        this.currentStep = 0
+        await this.speak("Basic Form. Ready, begin.")
+        while (this.currentStep < form.length) {
+            await delay(1000 * this.timeBetweenSteps)
+            console.log("Playing step " + this.currentStep)
+            await this.speak(form[this.currentStep])
+            this.currentStep = this.currentStep + 1
+        }
+        console.log("Done!")
+    }
+
+    stop() {
+        console.log("Stopping")
+        this.isPlaying = false
+        this.currentStep = 0
+        synth.cancel()
+    }
+
+    speak = async (text) => {
+        return new Promise((resolve, reject) => {
+            let utterThis = new SpeechSynthesisUtterance();
+            utterThis.text = text
+            utterThis.rate = this.dictationSpeed
+            synth.speak(utterThis);
+            utterThis.onend = resolve;
+        });
+    };
+}
+
+let formPlayer = new FormPlayer()
 
 function App() {
 
-    let playing = false;
+    const [isPlaying, setIsPlaying] = useState(false);
     const [buttonText, setButtonText] = useState("Basic Form");
-    const synth = window.speechSynthesis;
+    const [timeBetweenSteps, setTimeBetweenSteps] = useState(5);
+    const [dictationSpeed, setDictationSpeed] = useState(1);
 
-    const speak = (text) => {
-        const msg = new SpeechSynthesisUtterance()
-        msg.text = text
-        msg.rate = 0.9
-        synth.speak(msg);
-    };
 
+    const changeDictationSpeed = (event) => {
+        setDictationSpeed(event.target.value);
+        formPlayer.dictationSpeed = event.target.value / 100
+    }
+
+    const changeTimeBetweenSteps = (event) => {
+        const newTime = Math.round((event.target.value / 100) * MAX_SECONDS_BETWEEN_STEPS)
+        setTimeBetweenSteps(newTime);
+        formPlayer.timeBetweenSteps = newTime
+    }
 
     const basicForm = ["Shift the balance to the right foot, pivot ninety degrees to the left, assume a front stance and down block.",
     "Step forward to a front stance, single middle punch.",
     "Shift the balance to the left foot, pivot one-hundred eighty degrees to the right, assume a front stance and down block."]
-    const delay = ms => new Promise(res => setTimeout(res, ms));
 
-    const speakForm = async (form) => {
-        speak("Basic Form. Ready, begin.")
-        for (let step in form) {
-            if (!playing) break;
-            speak(form[step])
-            delay(1000)
-        }
-    }
-    const handleClick = () => {
-        if (playing) {
-            console.log("Stopping")
-            setButtonText("Basic Form")
-            playing = false
-            synth.cancel()
-        } else {
-            console.log("Starting")
+
+    useEffect(() => {
+        if (isPlaying) {
+            formPlayer.play(basicForm)
             setButtonText("STOP")
-            playing = true
-            speakForm(basicForm)
+        } else {
+            formPlayer.stop()
+            setButtonText("Basic Form")
         }
+    }, [isPlaying]);
+
+    const ClickHandler = () => {
+        setIsPlaying(!isPlaying)
     };
 
   return (
+
       <div className='App'>
-        <h1>Forms Teacher</h1>
-          <div>
-              <button type="button" onClick={handleClick}>{buttonText}</button>
-          </div>
+          <Navbar bg="light" expand="lg">
+              <Container>
+                  <Navbar.Brand href="#home">Forms Teacher</Navbar.Brand>
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+
+                  </Navbar.Collapse>
+              </Container>
+          </Navbar>
+          <Container>
+              <Row>
+                    <Col>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Dictation Speed: {dictationSpeed}</Form.Label>
+                                <Form.Range onChange={changeDictationSpeed}/>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Wait {timeBetweenSteps} seconds between two steps</Form.Label>
+                                <Form.Range onChange={changeTimeBetweenSteps} />
+                            </Form.Group>
+                            <Button as="button" variant="primary" onClick={ClickHandler}>
+                                {buttonText}
+                            </Button>
+                        </Form>
+                    </Col>
+              </Row>
+
+
+          </Container>
       </div>
   )
 }
