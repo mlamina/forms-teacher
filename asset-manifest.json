@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/forms-teacher/static/css/main.073c9b0a.css",
+    "main.js": "/forms-teacher/static/js/main.157bbad5.js",
+    "static/js/787.85e9bdda.chunk.js": "/forms-teacher/static/js/787.85e9bdda.chunk.js",
+    "index.html": "/forms-teacher/index.html",
+    "main.073c9b0a.css.map": "/forms-teacher/static/css/main.073c9b0a.css.map",
+    "main.157bbad5.js.map": "/forms-teacher/static/js/main.157bbad5.js.map",
+    "787.85e9bdda.chunk.js.map": "/forms-teacher/static/js/787.85e9bdda.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.157bbad5.js"
+  ]
+}
