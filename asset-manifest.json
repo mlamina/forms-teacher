@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/forms-teacher/static/css/main.756af292.css",
-    "main.js": "/forms-teacher/static/js/main.d11fee1e.js",
+    "main.js": "/forms-teacher/static/js/main.fa1b22d5.js",
     "static/js/787.85e9bdda.chunk.js": "/forms-teacher/static/js/787.85e9bdda.chunk.js",
     "index.html": "/forms-teacher/index.html",
     "main.756af292.css.map": "/forms-teacher/static/css/main.756af292.css.map",
-    "main.d11fee1e.js.map": "/forms-teacher/static/js/main.d11fee1e.js.map",
+    "main.fa1b22d5.js.map": "/forms-teacher/static/js/main.fa1b22d5.js.map",
     "787.85e9bdda.chunk.js.map": "/forms-teacher/static/js/787.85e9bdda.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.756af292.css",
-    "static/js/main.d11fee1e.js"
+    "static/js/main.fa1b22d5.js"
   ]
 }
