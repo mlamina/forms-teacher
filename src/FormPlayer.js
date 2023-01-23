@@ -82,7 +82,12 @@ class FormPlayer extends React.Component {
     speak = async (text) => {
         return new Promise((resolve, reject) => {
             let utterThis = new SpeechSynthesisUtterance();
+            const selectedVoice = this.props.voice
+
             utterThis.text = text
+            utterThis.voice = speechSynthesis.getVoices().filter(function(voice) {
+                return voice.voiceURI === selectedVoice;
+            })[0]
             utterThis.rate = this.props.speed / 100
             synth.speak(utterThis);
             utterThis.onend = resolve;

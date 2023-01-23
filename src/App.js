@@ -16,10 +16,15 @@ function App() {
 
     const [timeBetweenSteps, setTimeBetweenSteps] = useState(2);
     const [dictationSpeed, setDictationSpeed] = useState(95);
+    const [voice, setVoice] = useState("Samantha");
 
 
     const changeDictationSpeed = (event) => {
         setDictationSpeed(event.target.value);
+    }
+
+    const changeVoice = (event) => {
+        setVoice(event.target.value);
     }
 
     const changeTimeBetweenSteps = (event) => {
@@ -27,9 +32,15 @@ function App() {
         setTimeBetweenSteps(newTime);
     }
 
-    const formButtons = [];
+    const formButtons = []
     for (let i = 0; i < FORMS.length; i++) {
-        formButtons.push(<FormPlayer key={FORMS[i].name} as={Row} name={FORMS[i].name} steps={FORMS[i].steps} speed={dictationSpeed} secondsBetweenSteps={timeBetweenSteps}/>);
+        formButtons.push(<FormPlayer voice={voice} key={FORMS[i].name} as={Row} name={FORMS[i].name} steps={FORMS[i].steps} speed={dictationSpeed} secondsBetweenSteps={timeBetweenSteps}/>);
+    }
+    const voices = window.speechSynthesis.getVoices()
+    const voiceOptions = []
+
+    for (let i = 0; i < voices.length; i++) {
+        voiceOptions.push(<option value={voices[i].voiceURI} key={voices[i].voiceURI}>{voices[i].name}</option>);
     }
 
     return (
@@ -44,13 +55,21 @@ function App() {
                 </div>
             </nav>
             <Container className="p-3 mb-2 border border-secondary rounded rounded-3  bg-secondary text-white">
-
                 Put your headphones in and make sure to not turn off your phone's screen!
             </Container>
             <Container>
                 <Form>
                     <Form.Group  as={Row} className="p-3" controlId="settingsForm.DictationSpeed">
-                        <Form.Label column sm={2}>Dictation Speed: {dictationSpeed}</Form.Label>
+                        <Form.Label column sm={2}>Voice</Form.Label>
+                        <Col sm={10} className="d-flex align-items-center">
+                            <Form.Select aria-label="Select a voice" onChange={changeVoice}>
+                                {voiceOptions}
+                            </Form.Select>
+                        </Col>
+
+                    </Form.Group>
+                    <Form.Group  as={Row} className="p-3" controlId="settingsForm.DictationSpeed">
+                        <Form.Label column sm={2}>Dictation Speed</Form.Label>
                         <Col sm={10} className="d-flex align-items-center">
                             <Form.Range className="w-100 h-100 custom-range" onChange={changeDictationSpeed}/>
                         </Col>
@@ -58,15 +77,12 @@ function App() {
                     </Form.Group>
 
                     <Form.Group as={Row} className="p-3" controlId="settingsForm.TimeBetweenSteps">
-                        <Form.Label column sm={2}>{timeBetweenSteps} seconds between steps</Form.Label>
+                        <Form.Label column sm={2}>Wait {timeBetweenSteps} seconds</Form.Label>
                         <Col sm={10} className="d-flex align-items-center">
-                            <Form.Range onChange={changeTimeBetweenSteps} className=" w-100 h-100 custom-range" />
+                            <Form.Range onChange={changeTimeBetweenSteps} className="w-100 h-100 custom-range" />
                         </Col>
                     </Form.Group >
                     {formButtons}
-                    <Form.Group as={Row} className="mb-3" controlId="settingsForm.Forms">
-
-                    </Form.Group>
 
                 </Form>
 
