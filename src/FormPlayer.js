@@ -9,28 +9,6 @@ const delay = ms => new Promise((res) => {
     return setTimeout(res, ms)
 });
 
-const basicForm = [
-    "Shift the balance to the right foot, pivot ninety degrees to the left, assume a front stance and down block.",
-    "Step forward to a front stance, single middle punch.",
-    "Shift the balance to the left foot, pivot one-hundred eighty degrees to the right, assume a front stance and down block.",
-    "Step forward to a front stance, single middle punch.",
-    "Shift the balance to the right foot, pivot ninety (90) degrees to the left, assume a front stance and down block.",
-    "Step forward, front stance and (inside) middle block.",
-    "Step forward, front stance and (inside) middle block.",
-    "Step forward, front stance, middle punch and kihap.",
-    "Shift the balance to the right foot, pivot two-hundred seventy (270) degrees to the left, assume a front stance and rising block.",
-    "Step forward to a front stance, single middle punch.",
-    "Shift the balance to the left foot, pivot one-hundred eighty (180) degrees to the right, assume a front stance and rising block.",
-    "Step forward to a front stance, single middle punch.",
-    "Shift the balance to the right foot, pivot ninety (90) degrees to the left, assume a front stance and down block.",
-    "Front kick, step forward front stance and middle punch.",
-    "Front kick, step forward front stance and middle punch.",
-    "Front kick, step forward front stance, middle punch and kihap.",
-    "Shift the balance to the right foot, pivot two-hundred seventy (270) degrees to the left, assume a front stance and down block.",
-    "Step forward, front stance and middle punch.",
-    "Shift the balance to the left foot, pivot one-hundred eighty (180) degrees to the right, assume a front stance and down block.",
-    "Step forward, front stance and middle punch.",
-]
 
 class FormPlayer extends React.Component {
     constructor(props) {
@@ -40,8 +18,6 @@ class FormPlayer extends React.Component {
             isPlaying: false,
             currentStep: 0
         };
-        // TODO Load form dynamically based on component property
-        this.form = basicForm
 
         // This binding is necessary to make `this` work in the callback
         this.play = this.play.bind(this);
@@ -54,11 +30,11 @@ class FormPlayer extends React.Component {
             currentStep: 0
         }));
         await this.speak(this.props.name + ". Ready, begin.")
-        while (this.state.isPlaying && this.state.currentStep < this.form.length - 1) {
+        while (this.state.isPlaying && this.state.currentStep < this.props.steps.length - 1) {
             await delay(1000 * this.props.secondsBetweenSteps)
             console.log("Playing step " + this.state.currentStep)
             console.log("Seconds between steps " + this.props.secondsBetweenSteps)
-            await this.speak(this.form[this.state.currentStep])
+            await this.speak(this.props.steps[this.state.currentStep])
             this.setState(prevState => ({
                 currentStep: prevState.currentStep + 1,
             }));
@@ -87,16 +63,16 @@ class FormPlayer extends React.Component {
 
     render() {
         const isPlaying = this.state.isPlaying;
-        const max = this.form.length;
+        const max = this.props.steps.length;
         const current = this.state.currentStep + 1;
         if (isPlaying) {
             return (
-                <Row>
-                    <Col sm={10}>
-                        <ProgressBar className="align-middle" striped animated variant="success" max={max} now={current} label={`${current} / ${max}`} />
+                <Row className="mt-3">
+                    <Col sm={10} className="d-flex align-items-center">
+                        <ProgressBar className="w-100 h-100" striped animated variant="success" max={max} now={current} label={`${current} / ${max}`} />
                     </Col>
                     <Col sm={2}>
-                        <Button as="button" size="lg" variant="danger" onClick={this.stop}>
+                        <Button as="button" size="lg" variant="danger" className="w-100 p-3" onClick={this.stop}>
                             Stop
                         </Button>
                     </Col>
@@ -104,9 +80,11 @@ class FormPlayer extends React.Component {
             );
         } else {
             return (
-                <Button as="button" variant="success" size="lg" onClick={this.play}>
-                    Start {this.name}
-                </Button>
+                <Row className="mt-3">
+                    <Button as="button" variant="success" size="lg" onClick={this.play}>
+                        Start {this.name}
+                    </Button>
+                </Row>
             );
         }
 
