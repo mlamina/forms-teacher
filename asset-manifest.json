@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/forms-teacher/static/css/main.756af292.css",
-    "main.js": "/forms-teacher/static/js/main.e2fbceb4.js",
+    "main.css": "/forms-teacher/static/css/main.9b55f371.css",
+    "main.js": "/forms-teacher/static/js/main.ec75cc34.js",
     "static/js/787.85e9bdda.chunk.js": "/forms-teacher/static/js/787.85e9bdda.chunk.js",
+    "static/media/logo.png": "/forms-teacher/static/media/logo.caa5e919bf43161e092b.png",
     "index.html": "/forms-teacher/index.html",
-    "main.756af292.css.map": "/forms-teacher/static/css/main.756af292.css.map",
-    "main.e2fbceb4.js.map": "/forms-teacher/static/js/main.e2fbceb4.js.map",
+    "main.9b55f371.css.map": "/forms-teacher/static/css/main.9b55f371.css.map",
+    "main.ec75cc34.js.map": "/forms-teacher/static/js/main.ec75cc34.js.map",
     "787.85e9bdda.chunk.js.map": "/forms-teacher/static/js/787.85e9bdda.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.756af292.css",
-    "static/js/main.e2fbceb4.js"
+    "static/css/main.9b55f371.css",
+    "static/js/main.ec75cc34.js"
   ]
 }
