@@ -67,12 +67,12 @@ class FormPlayer extends React.Component {
         const current = this.state.currentStep + 1;
         if (isPlaying) {
             return (
-                <Row className="mt-3">
-                    <Col sm={10} className="d-flex align-items-center">
-                        <ProgressBar className="w-100 h-100" striped animated variant="success" max={max} now={current} label={`${current} / ${max}`} />
+                <Row>
+                    <Col sm={10} className="d-flex align-items-center p-3">
+                        <ProgressBar className="w-100 h-100" striped animated variant="primary" max={max} now={current} label={`${current} / ${max}`} />
                     </Col>
-                    <Col sm={2}>
-                        <Button as="button" size="lg" variant="danger" className="w-100 p-3" onClick={this.stop}>
+                    <Col sm={2} className="p-3">
+                        <Button as="button" size="lg" variant="danger" className="w-100" onClick={this.stop}>
                             Stop
                         </Button>
                     </Col>
@@ -80,9 +80,9 @@ class FormPlayer extends React.Component {
             );
         } else {
             return (
-                <Row className="mt-3">
+                <Row className="p-3">
                     <Button as="button" variant="success" size="lg" onClick={this.play}>
-                        Start {this.name}
+                        {this.name}
                     </Button>
                 </Row>
             );

@@ -1,7 +1,7 @@
 import "./App.css"
 import {useState} from "react"
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import logo from './logo.png'
 import {Col, Form, Nav, Row} from "react-bootstrap";
 import FormPlayer from "./FormPlayer";
 
@@ -35,31 +35,28 @@ function App() {
     return (
 
         <div className='App'>
-            <Navbar bg="light" expand="lg">
-                <Container>
-                    <Navbar.Brand href="#home">Forms Teacher</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            <nav className="navbar navbar-default" role="navigation">
+                <div className="navbar-header">
+                    <a className="navbar-brand" href="#">
+                        <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
+                        Quantum Forms Reader
+                    </a>
+                </div>
+            </nav>
             <Container>
                 <Form>
-                    <Form.Group  as={Row} className="mb-3" controlId="settingsForm.DictationSpeed">
+                    <Form.Group  as={Row} className="p-3" controlId="settingsForm.DictationSpeed">
                         <Form.Label column sm={2}>Dictation Speed: {dictationSpeed}</Form.Label>
                         <Col sm={10} className="d-flex align-items-center">
-                            <Form.Range onChange={changeDictationSpeed}/>
+                            <Form.Range className="w-100 h-100 custom-range" onChange={changeDictationSpeed}/>
                         </Col>
 
                     </Form.Group>
 
-                    <Form.Group as={Row} className="mb-3 border-bottom" controlId="settingsForm.TimeBetweenSteps">
-                        <Form.Label column sm={2}>Wait {timeBetweenSteps} seconds between two steps</Form.Label>
+                    <Form.Group as={Row} className="p-3" controlId="settingsForm.TimeBetweenSteps">
+                        <Form.Label column sm={2}>{timeBetweenSteps} seconds between steps</Form.Label>
                         <Col sm={10} className="d-flex align-items-center">
-                            <Form.Range onChange={changeTimeBetweenSteps} className="align-middle" />
+                            <Form.Range onChange={changeTimeBetweenSteps} className=" w-100 h-100 custom-range" />
                         </Col>
                     </Form.Group >
                     {formButtons}
