@@ -2,7 +2,7 @@ import "./App.css"
 import {useState} from "react"
 import Container from 'react-bootstrap/Container';
 import logo from './logo.png'
-import {Col, Form, Nav, Row} from "react-bootstrap";
+import {Col, Form, Row} from "react-bootstrap";
 import FormPlayer from "./FormPlayer";
 
 const FORMS = [
@@ -16,7 +16,11 @@ function App() {
 
     const [timeBetweenSteps, setTimeBetweenSteps] = useState(2);
     const [dictationSpeed, setDictationSpeed] = useState(95);
-    const [voice, setVoice] = useState("Samantha");
+    const [voice, setVoice] = useState("");
+
+    window.speechSynthesis.onvoiceschanged = function(e) {
+        setVoice(window.speechSynthesis.getVoices()[0].voiceURI)
+    };
 
 
     const changeDictationSpeed = (event) => {
@@ -48,10 +52,10 @@ function App() {
         <div className='App'>
             <nav className="navbar navbar-default" role="navigation">
                 <div className="navbar-header">
-                    <a className="navbar-brand" href="#">
+                    <span className="navbar-brand">
                         <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
                         Quantum Forms Reader
-                    </a>
+                    </span>
                 </div>
             </nav>
             <Container className="p-3 mb-2 border border-secondary rounded rounded-3  bg-secondary text-white">
