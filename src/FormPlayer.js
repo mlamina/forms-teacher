@@ -29,6 +29,7 @@ class FormPlayer extends React.Component {
             isPlaying: true,
             currentStep: 0
         }));
+
         await this.speak(this.props.name + ". Ready, begin.")
         while (this.state.isPlaying && this.state.currentStep < this.props.steps.length - 1) {
             await delay(1000 * this.props.secondsBetweenSteps)
@@ -39,8 +40,12 @@ class FormPlayer extends React.Component {
                 currentStep: prevState.currentStep + 1,
             }));
         }
+        await delay(1000 * this.props.secondsBetweenSteps)
+        await this.speak("Burrow, show.")
+        await this.speak("End of " + this.props.name)
         this.setState(prevState => ({isPlaying: false}));
-        console.log("Done!")
+
+
     }
 
     stop() {
