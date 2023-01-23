@@ -29,7 +29,7 @@ class FormPlayer extends React.Component {
             isPlaying: true,
             currentStep: 0
         }));
-
+        await this.requestWakeLock()
         await this.speak(this.props.name + ". Ready, begin.")
         while (this.state.isPlaying && this.state.currentStep < this.props.steps.length - 1) {
             await delay(1000 * this.props.secondsBetweenSteps)
@@ -48,8 +48,31 @@ class FormPlayer extends React.Component {
 
     }
 
+    async requestWakeLock() {
+        try {
+            this.wakeLock = await navigator.wakeLock.request('screen');
+            console.log("Successfully requested wake lock");
+        } catch (err) {
+            // the wake lock request fails - usually system related, such being low on battery
+            console.log(`${err.name}, ${err.message}`);
+        }
+    }
+
+    releaseWakeLock() {
+        if (this.wakeLock) {
+            try {
+                console.log("Releasing wake lock");
+                this.wakeLock.release()
+                this.wakeLock = undefined
+            } catch (err) {
+                // the wake lock request fails - usually system related, such being low on battery
+                console.log(`${err.name}, ${err.message}`);
+            }
+        }
+    }
+
     stop() {
-        console.log("Stopping")
+        this.releaseWakeLock()
         this.setState(prevState => ({
             isPlaying: false
         }));

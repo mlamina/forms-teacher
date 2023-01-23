@@ -14,8 +14,8 @@ const MAX_SECONDS_BETWEEN_STEPS = 10;
 
 function App() {
 
-    const [timeBetweenSteps, setTimeBetweenSteps] = useState(5);
-    const [dictationSpeed, setDictationSpeed] = useState(1);
+    const [timeBetweenSteps, setTimeBetweenSteps] = useState(2);
+    const [dictationSpeed, setDictationSpeed] = useState(95);
 
 
     const changeDictationSpeed = (event) => {
@@ -43,6 +43,10 @@ function App() {
                     </a>
                 </div>
             </nav>
+            <Container className="p-3 mb-2 border border-secondary rounded rounded-3  bg-secondary text-white">
+
+                Put your headphones in and make sure to not turn off your phone's screen!
+            </Container>
             <Container>
                 <Form>
                     <Form.Group  as={Row} className="p-3" controlId="settingsForm.DictationSpeed">
