@@ -11,6 +11,7 @@ const FORMS = [
 ]
 
 const MAX_SECONDS_BETWEEN_STEPS = 10;
+const canWakeLock = 'wakeLock' in navigator;
 
 function App() {
 
@@ -87,7 +88,9 @@ function App() {
                         </Col>
                     </Form.Group >
                     {formButtons}
-
+                    <Row className="p-3 text-secondary">
+                        Wakelock supported: {canWakeLock ? "Yes" : "No"}
+                    </Row>
                 </Form>
 
             </Container>
