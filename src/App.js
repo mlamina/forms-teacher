@@ -16,7 +16,7 @@ const canWakeLock = 'wakeLock' in navigator;
 function App() {
 
     const [timeBetweenSteps, setTimeBetweenSteps] = useState(2);
-    const [dictationSpeed, setDictationSpeed] = useState(95);
+    const [dictationSpeed, setDictationSpeed] = useState(100);
     const [voice, setVoice] = useState("");
 
     window.speechSynthesis.onvoiceschanged = function(e) {
@@ -48,6 +48,11 @@ function App() {
         voiceOptions.push(<option value={voices[i].voiceURI} key={voices[i].voiceURI}>{voices[i].name}</option>);
     }
 
+    let message = "Put your headphones in and select a form!"
+    if (!canWakeLock) {
+        message = "The app will stop working if your screen turns off, make sure to disable your phone's auto-lock feature."
+    }
+
     return (
 
         <div className='App'>
@@ -59,12 +64,14 @@ function App() {
                     </span>
                 </div>
             </nav>
-            <Container className="p-3 mb-2 border border-secondary rounded rounded-3  bg-secondary text-white">
-                Put your headphones in and make sure to not turn off your phone's screen!
-            </Container>
+
             <Container>
                 <Form>
-                    <Form.Group  as={Row} className="p-3" controlId="settingsForm.DictationSpeed">
+                    <Row className="p-3 border border-secondary rounded rounded-3 bg-secondary text-white flex align-content-center">
+                        <Col>{message}</Col>
+
+                    </Row>
+                    <Form.Group as={Row} className="p-3" controlId="settingsForm.DictationSpeed">
                         <Form.Label column sm={2}>Voice</Form.Label>
                         <Col sm={10} className="d-flex align-items-center">
                             <Form.Select aria-label="Select a voice" onChange={changeVoice}>
@@ -82,7 +89,7 @@ function App() {
                     </Form.Group>
 
                     <Form.Group as={Row} className="p-3" controlId="settingsForm.TimeBetweenSteps">
-                        <Form.Label column sm={2}>Wait {timeBetweenSteps} seconds</Form.Label>
+                        <Form.Label column sm={2}>{timeBetweenSteps} seconds between steps</Form.Label>
                         <Col sm={10} className="d-flex align-items-center">
                             <Form.Range onChange={changeTimeBetweenSteps} className="w-100 h-100 custom-range" />
                         </Col>
