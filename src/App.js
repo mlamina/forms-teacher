@@ -8,7 +8,14 @@ import FormPlayer from "./FormPlayer";
 const FORMS = [
     require('./forms/basic_form.json'),
     require('./forms/gravity.json'),
-    require('./forms/walk_in_the_park.json')
+    require('./forms/terramoto.json'),
+    require('./forms/riverbed.json'),
+    require('./forms/attitude.json'),
+    require('./forms/waterfall.json'),
+    require('./forms/spirit.json'),
+    require('./forms/walk_in_the_park.json'),
+    require('./forms/quetzalcoatl.json'),
+    require('./forms/alignment.json')
 ]
 
 const MAX_SECONDS_BETWEEN_STEPS = 10;
