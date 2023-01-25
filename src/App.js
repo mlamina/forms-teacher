@@ -7,7 +7,8 @@ import FormPlayer from "./FormPlayer";
 
 const FORMS = [
     require('./forms/basic_form.json'),
-    require('./forms/gravity.json')
+    require('./forms/gravity.json'),
+    require('./forms/walk_in_the_park.json')
 ]
 
 const MAX_SECONDS_BETWEEN_STEPS = 10;
@@ -39,7 +40,13 @@ function App() {
 
     const formButtons = []
     for (let i = 0; i < FORMS.length; i++) {
-        formButtons.push(<FormPlayer voice={voice} key={FORMS[i].name} as={Row} name={FORMS[i].name} steps={FORMS[i].steps} speed={dictationSpeed} secondsBetweenSteps={timeBetweenSteps}/>);
+        formButtons.push(<FormPlayer voice={voice}
+                                     key={FORMS[i].name}
+                                     as={Row}
+                                     name={FORMS[i].name}
+                                     color={FORMS[i].color}
+                                     steps={FORMS[i].steps}
+                                     speed={dictationSpeed} secondsBetweenSteps={timeBetweenSteps}/>);
     }
     const voices = window.speechSynthesis.getVoices()
     const voiceOptions = []

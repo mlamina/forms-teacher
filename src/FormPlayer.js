@@ -8,7 +8,12 @@ const delay = ms => new Promise((res) => {
     console.log("Waiting " + ms)
     return setTimeout(res, ms)
 });
-
+const COLOR_MAP = {
+    "red": "danger",
+    "yellow": "warning",
+    "blue": "primary",
+    "green": "success"
+}
 
 class FormPlayer extends React.Component {
     constructor(props) {
@@ -98,6 +103,7 @@ class FormPlayer extends React.Component {
         const isPlaying = this.state.isPlaying;
         const max = this.props.steps.length;
         const current = this.state.currentStep + 1;
+        const colorClass = COLOR_MAP[this.props.color]
         if (isPlaying) {
             return (
                 <Row>
@@ -114,7 +120,7 @@ class FormPlayer extends React.Component {
         } else {
             return (
                 <Row className="p-3">
-                    <Button as="button" variant="success" size="lg" onClick={this.play}>
+                    <Button as="button" variant={colorClass} size="lg" onClick={this.play}>
                         {this.name}
                     </Button>
                 </Row>
