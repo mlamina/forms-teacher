@@ -1,0 +1,12 @@
+- React application with Bootstrap for UI components
+- Uses speech synthesis API for dictation
+- Provides a form player with adjustable dictation speed and time between steps
+- Supports wake lock to prevent screen from turning off
+- Includes a set of predefined forms with steps for dictation
+- Forms are JSON files with name, color, and steps
+- FormPlayer component handles dictation of form steps
+- App component manages form selection and settings
+- Uses CSS files for styling
+- Includes unit tests with src/App.test.js
+- Contains public assets like icons and manifest for PWA
+- Project setup with create-react-app
