@@ -1,0 +1,42 @@
+- description: '1. Look at the project TODOs
+
+    2. Pick one and fix it
+
+    3. Create a new PR'
+  input_required: false
+  title: Fix a TODO
+- description: '1. Look at the list of open Github issues
+
+    2. Read the issue and determine how to fix it
+
+    3. Fix it and create a PR'
+  input_required: false
+  title: Fix a Github Issue
+- description: '1. Read the file tree
+
+    2. Pick a random Python file
+
+    3. Look at my coding style and roast the hell out of it. Use emojis!'
+  input_required: false
+  title: Roast My Style
+- description: 'Read the git history and summarize what you did.'
+  input_required: false
+  title: Self-Reflect
+- description: '1. Look at the existing workflows
+
+    2. Look at the file tree
+
+    3. Use that information together with your knowledge of the project to suggest a new workflow'
+  input_required: false
+  title: Suggest a new workflow
+- description: '1. Look at the open issues on Github
+
+    2. Pick one that seems the most urgent
+
+    3. Read it and understand what the issue is
+    
+    4. If required, read the relevant files
+    
+    5. Add a helpful comment to the issue'
+  input_required: false
+  title: Add helpful comment to an issue

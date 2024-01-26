@@ -1,0 +1,22 @@
+- React application with a main component in `src/App.js`
+- Uses React Bootstrap for UI components
+- Uses `useState` hook for state management in `src/App.js`
+- Uses `react-bootstrap/Container`, `Form`, `Row`, `Col` components for layout in `src/App.js`
+- Uses `FormPlayer` component to handle form playback in `src/App.js`
+- `FormPlayer` component defined in `src/FormPlayer.js`
+- `FormPlayer` uses `window.speechSynthesis` for text-to-speech functionality
+- `FormPlayer` supports wake lock to prevent screen from turning off
+- `FormPlayer` uses `react-bootstrap/Button` and `ProgressBar` components
+- `FormPlayer` uses a color map for button variants
+- `FormPlayer` handles speech synthesis with custom voice and speed settings
+- `FormPlayer` provides stop functionality to cancel speech and release wake lock
+- Forms are JSON files in `src/forms` directory
+- `src/forms/basic_form.json` defines a form with name, color, and steps
+- `src/index.js` imports Bootstrap CSS
+- `src/index.js` uses `ReactDOM.createRoot` to render the app
+- `src/index.js` includes `reportWebVitals` for performance measuring
+- `src/App.css` and `src/index.css` are included for styling
+- `public/index.html` is the HTML template for the application
+- `public/manifest.json` defines web app manifest for the application
+- `public/robots.txt` is present for search engine instructions
+- `package.json` and `package-lock.json` files are present for managing dependencies
