@@ -1,0 +1,21 @@
+- React application
+- Uses Bootstrap for styling
+- Uses react-bootstrap for React components
+- Speech synthesis functionality
+- Wake lock functionality to prevent screen from turning off
+- Forms are JSON files loaded in App.js
+- FormPlayer component to manage form playback
+- Speech rate and voice selection features
+- Time between steps is adjustable
+- ProgressBar from react-bootstrap to show progress
+- Button from react-bootstrap to control playback
+- Deployed to GitHub Pages
+- Uses web-vitals for performance tracking
+- Unit testing with @testing-library/react
+- ESLint for code quality
+- React version 18.2.0
+- Bootstrap version 5.2.3
+- react-bootstrap version 2.7.0
+- react-scripts version 5.0.1
+- react-slider version 2.0.4
+- gh-pages for deployment
