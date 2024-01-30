@@ -1,0 +1,17 @@
+- React application
+- Uses Bootstrap for styling
+- Implements a FormPlayer component
+- FormPlayer uses Web Speech API for speech synthesis
+- FormPlayer supports wake lock to prevent screen from turning off
+- FormPlayer has a play and stop functionality for dictation
+- FormPlayer uses React Bootstrap components
+- FormPlayer maps form colors to Bootstrap color variants
+- App component manages state for dictation speed, voice, and time between steps
+- App component dynamically loads forms from JSON files
+- App component renders navigation bar with logo
+- App component displays a message about wake lock support
+- App component allows voice selection for dictation
+- App component allows adjusting dictation speed and time between steps
+- JSON form files define steps for dictation
+- JSON form files include a name and color for each form
+- Basic Form JSON includes martial arts steps for dictation
