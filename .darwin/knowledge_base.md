@@ -1,0 +1,16 @@
+- React project with Bootstrap for UI components
+- Uses speech synthesis for dictation
+- Contains a `FormPlayer` component to manage form playback
+- `FormPlayer` uses a wake lock to prevent the screen from turning off
+- `FormPlayer` has a play and stop functionality
+- `FormPlayer` uses a color map for button variants
+- Forms are JSON files with name, color, and steps
+- `App.js` manages state for dictation speed, voice, and time between steps
+- `App.js` dynamically generates form buttons based on JSON files
+- `App.js` includes a navbar with the app's logo and title
+- `App.js` displays a message about wake lock support
+- `App.js` uses React Bootstrap components like Container, Row, Col, Form, and Form.Group
+- `index.js` imports Bootstrap CSS
+- `index.js` sets up React app with strict mode
+- `index.js` includes a call to `reportWebVitals`
+- `basic_form.json` defines a form with steps for a routine
