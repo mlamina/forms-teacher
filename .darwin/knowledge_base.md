@@ -1,0 +1,30 @@
+- React application
+- Uses `react-bootstrap` for UI components
+- Implements `FormPlayer` component for playing audio forms
+- `FormPlayer` uses Web Speech API for speech synthesis
+- `FormPlayer` supports wake lock to prevent screen from turning off
+- `FormPlayer` has a play and stop functionality
+- `FormPlayer` maps form colors to Bootstrap contextual color names
+- `App` component manages state for dictation speed, voice selection, and time between steps
+- `App` component dynamically generates buttons for each form
+- Forms are JSON files located in `src/forms`
+- `App` component displays a message about wake lock support
+- `App` component uses `useState` hook from React
+- `App` component loads forms from JSON files using `require`
+- `App` component sets up speech synthesis voices
+- `App` component contains settings for voice, dictation speed, and time between steps
+- `App` component uses `Container`, `Form`, `Row`, and `Col` from `react-bootstrap`
+- `App` component uses `Form.Range` for slider inputs
+- `App` component uses `Form.Select` for dropdown selection
+- `App` component uses `Form.Group` for form controls
+- `App` component uses `ProgressBar` from `react-bootstrap` to show progress
+- `App` component uses `Button` from `react-bootstrap` for form buttons and stop button
+- `App` component uses `Navbar` from `react-bootstrap` for navigation header
+- `App` component displays a navbar with the app's logo and title
+- `index.js` imports `bootstrap` CSS for styling
+- `index.js` sets up React application with `App` component
+- `public/index.html` includes metadata and links to favicon images
+- `public/index.html` sets the application's title to 'Forms Teacher'
+- `public/index.html` includes a manifest for web app installation
+- `public/index.html` includes meta tags for mobile device compatibility
+- `public/index.html` includes cache control meta tags
