@@ -1,0 +1,19 @@
+- React project named `forms_teacher`
+- Uses Bootstrap 5 for styling
+- Uses `react-bootstrap` library
+- Implements a `FormPlayer` component in `src/FormPlayer.js`
+- `FormPlayer` component uses speech synthesis
+- `FormPlayer` component handles wake lock functionality
+- `FormPlayer` component has play and stop functionality for dictation
+- `FormPlayer` component uses a color map for button variants
+- `App` component in `src/App.js` manages form selection and settings
+- `App` component uses `useState` hook for state management
+- `App` component loads form data from JSON files in `src/forms`
+- `App` component allows voice and dictation speed selection
+- `App` component displays a message about wake lock support
+- `index.js` imports Bootstrap CSS
+- `index.js` sets up React app with strict mode
+- `index.js` includes performance reporting with `reportWebVitals`
+- `package.json` includes scripts for deployment to GitHub Pages
+- `package.json` specifies `react-scripts` for build and development tasks
+- `package.json` lists `web-vitals` as a dependency for performance metrics
