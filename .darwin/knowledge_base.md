@@ -1,0 +1,16 @@
+- Project name: `forms_teacher`
+- React version: `^18.2.0`
+- Uses `react-bootstrap` for UI components
+- Uses `bootstrap` version `^5.2.3`
+- Supports deployment to GitHub Pages with `gh-pages`
+- Uses `react-scripts` for build and development scripts
+- Includes testing dependencies: `@testing-library/jest-dom`, `@testing-library/react`, `@testing-library/user-event`
+- ESLint configured with `react-app` and `react-app/jest` presets
+- Browser support targets include recent versions of Chrome, Firefox, and Safari in development; broader range in production
+- `FormPlayer.js` uses `SpeechSynthesis` for text-to-speech functionality
+- `FormPlayer.js` supports wake lock to prevent screen from turning off
+- `App.js` dynamically loads form configurations from JSON files in `src/forms`
+- Forms can have steps, names, and associated colors
+- `App.js` allows users to select a voice for speech synthesis and adjust dictation speed and time between steps
+- `App.js` and `FormPlayer.js` use React state and props for dynamic content and settings
+- `src/forms/attitude.json` defines a form named "Attitude" with color "green" but has no steps
